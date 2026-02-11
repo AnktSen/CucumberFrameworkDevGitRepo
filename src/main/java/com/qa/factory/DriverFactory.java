@@ -33,7 +33,7 @@ public class DriverFactory {
 				options.addArguments("--no-sandbox");
 				options.addArguments("--disable-dev-shm-usage");
 			}
-			tlDriver.set(new EdgeDriver());
+			tlDriver.set(new EdgeDriver(options));
 		} else {
 			System.out.println("Please pass a correct browser value: " + browser);
 			return null;
@@ -41,7 +41,6 @@ public class DriverFactory {
 
 		getDriver().manage().deleteAllCookies();
 		getDriver().manage().window().maximize();
-
 		return getDriver();
 	}
 
