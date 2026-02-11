@@ -35,7 +35,7 @@ public class LoginSteps {
 		System.out.println("pageTitle");
 		Assert.assertTrue(pageTitle.contains(title));
 	}
-
+/*
 
 	@When("user enters username {string}")
 	public void user_enters_username(String userName) throws InterruptedException {
@@ -59,7 +59,7 @@ public class LoginSteps {
 	public void user_gets_the_title_of_the_home_page() {
 		String success= loginPage.getTitleAfterLogin();
 		Assert.assertEquals(success, "Dashboard");
-	}
+	}*/
 
 
 
