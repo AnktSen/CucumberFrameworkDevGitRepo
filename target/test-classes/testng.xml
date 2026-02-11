@@ -4,7 +4,7 @@
     <test name="Cucumber Tests">
         <classes>
             <!-- Ensure this matches your runner package and class name -->
-            <class name="testRunners.MyTestRunnerTest"/>
+            <class name="testRunners.MyTestRunner"/>
         </classes>
     </test>
 </suite>
