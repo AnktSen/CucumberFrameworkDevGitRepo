@@ -9,7 +9,6 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>17</java.version>
-		<junit.version>5.11.0</junit.version>
 		<cucumber.version>7.20.1</cucumber.version>
 		<selenium.version>4.28.0</selenium.version>
 		<maven.compiler.version>3.13.0</maven.compiler.version>
@@ -46,15 +45,6 @@
 			<version>${cucumber.version}</version>
 			<scope>test</scope>
 		</dependency>
-
-		<!-- JUnit 5 (Jupiter) -->
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter</artifactId>
-			<version>${junit.version}</version>
-			<scope>test</scope>
-		</dependency>
-
 		<!-- TestNG -->
 		<dependency>
 			<groupId>org.testng</groupId>
