@@ -1,0 +1,33 @@
+name: Selenium Cucumber CI
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: maven
+
+    - name: Run Automation Tests
+      # This runs your Maven test and passes the headless flag to your DriverFactory
+      run: mvn test -Dheadless=true
+
+    - name: Archive Cucumber Reports
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: cucumber-test-reports
+        path: target/cucumber-reports/
