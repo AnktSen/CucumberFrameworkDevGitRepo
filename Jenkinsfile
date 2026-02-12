@@ -14,19 +14,19 @@ pipeline {
                 
                 script {
                     try {
-                        // 2. Fetch Git info using '@' to suppress command echoing in the output
-                        // We use .trim() to remove any trailing newlines
+                        // 2. Fetch Git info
+                        // Using --pretty=%s to get ONLY the subject line (concise)
+                        // Using @echo off to prevent the command itself from appearing in the string
                         String commitHash = bat(script: "@echo off & git rev-parse --short HEAD", returnStdout: true).trim()
                         String commitMsg = bat(script: "@echo off & git log -1 --pretty=%s", returnStdout: true).trim()
                         
                         // 3. Set the display name
-                        // .take(30) ensures the message isn't so long it breaks the UI
+                        // We take only the first 50 characters to keep the UI neat
                         String shortMsg = commitMsg.take(50)
                         currentBuild.displayName = "#${env.BUILD_NUMBER} - ${shortMsg} (${commitHash})"
                         
                         echo "Successfully updated build name to: ${currentBuild.displayName}"
                     } catch (Exception e) {
-                        // If Git fails, we still want the build to try to run tests
                         echo "Could not update build name. Error: ${e.message}"
                         currentBuild.displayName = "#${env.BUILD_NUMBER} - Git Info Error"
                     }
