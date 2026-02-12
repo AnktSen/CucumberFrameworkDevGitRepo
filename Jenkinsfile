@@ -1,6 +1,11 @@
 pipeline {
     agent any    
     
+    // This block enables the pipeline to listen for GitHub Webhook triggers
+    triggers {
+        githubPush()
+    }
+
     tools {
         maven 'Maven 3.9'
         jdk 'JDK 17' 
