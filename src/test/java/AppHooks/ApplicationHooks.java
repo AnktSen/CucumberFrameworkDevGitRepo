@@ -3,6 +3,7 @@ package AppHooks;
 import org.openqa.selenium.WebDriver;
 
 import com.qa.factory.DriverFactory;
+import com.qa.util.ConfigReader;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -14,12 +15,8 @@ public class ApplicationHooks {
 
     @Before(order = 0)
     public void launchBrowser() {
-        String browserName = "chrome"; 
-        
-        // FIX: You must initialize the object before calling init_driver()
-        driverFactory = new DriverFactory(); 
-        
-        // Now driverFactory is NOT null, and we can call its methods
+        String browserName = ConfigReader.getProp("browser");
+        driverFactory = new DriverFactory();
         driver = driverFactory.init_driver(browserName);
     }
 
